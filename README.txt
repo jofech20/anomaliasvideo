@@ -73,10 +73,11 @@ AUTORES
 
 Josué Felipe Hurtado Chávez
 César Aarón Rivas Ramos
-Escuela Profesional de Ingeniería de Sistemas Computacionales
+Universidad Privada del Norte
 Facultad de Ingeniería – Lima 2025
 
 LICENCIA
 
 Proyecto académico con fines de investigación y validación tecnológica.
+
 Prohibida su distribución o uso comercial sin autorización de los autores.

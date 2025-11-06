@@ -1,0 +1,15 @@
+RESUMEN DE MÉTRICAS DE ENTRENAMIENTO – CNN+LSTM
+
+Dataset: Secuencias extraídas del conjunto Avenue / UCSD Ped2
+Tamaño de entrenamiento: 79,140 secuencias
+Tamaño de prueba: 6,949 secuencias
+Número de clases detectadas: 14
+
+Resultados finales:
+- Precisión (Accuracy): 1.0000
+- Pérdida (Loss): 1.15e-10
+- Precisión validación: 1.0000
+- Pérdida validación: 1.50e-11
+
+Observaciones:
+El modelo logró una precisión del 100% en el conjunto de prueba, indicando una alta capacidad de aprendizaje y generalización. No se detectaron sobreajustes significativos tras 10 épocas, debido al uso de Dropout y Early Stopping.

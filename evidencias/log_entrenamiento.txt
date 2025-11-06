@@ -1,0 +1,89 @@
+2025-10-24 11:23:34.858875: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-24 11:23:37.955840: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+→ Preparando secuencias (train)...
+→ Detectadas 14 categorías.
+→ Detectadas 14 categorías.
+Train sequences: 79140, Test sequences: 6949
+2025-10-24 11:24:54.837487: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.  
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)             │ (None, 16, 128, 128, 1)     │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed (TimeDistributed)   │ (None, 16, 128, 128, 32)    │             320 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_1 (TimeDistributed) │ (None, 16, 64, 64, 32)      │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_2 (TimeDistributed) │ (None, 16, 64, 64, 32)      │             128 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_3 (TimeDistributed) │ (None, 16, 64, 64, 64)      │          18,496 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_4 (TimeDistributed) │ (None, 16, 32, 32, 64)      │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_5 (TimeDistributed) │ (None, 16, 32, 32, 64)      │             256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_6 (TimeDistributed) │ (None, 16, 32, 32, 128)     │          73,856 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_7 (TimeDistributed) │ (None, 16, 16, 16, 128)     │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_8 (TimeDistributed) │ (None, 16, 16, 16, 128)     │             512 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ time_distributed_9 (TimeDistributed) │ (None, 16, 32768)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ lstm (LSTM)                          │ (None, 256)                 │      33,817,600 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 256)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 1)                   │             257 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 33,911,425 (129.36 MB)
+ Trainable params: 33,910,977 (129.36 MB)
+ Non-trainable params: 448 (1.75 KB)
+Epoch 1/10
+c:\Users\JOSUE\AppData\Local\Programs\Python\Python312\Lib\site-packages\keras\src\trainers\data_adapters\py_dataset_adapter.py:121: UserWarning: Your `PyDataset` class should call `super().__init__(**kwargs)` in its constructor. `**kwargs` can include `workers`, `use_multiprocessing`, `max_queue_size`. Do not pass these arguments to `fit()`, as they will be ignored.
+  self._warn_if_super_not_called()
+2025-10-24 11:25:41.949920: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:450] ShuffleDatasetV3:2: Filling up shuffle buffer (this may take a while): 6 of 8
+2025-10-24 11:25:45.431584: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:480] Shuffle buffer filled.
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 15s/step - accuracy: 0.9992 - loss: 0.0014       
+Epoch 1: val_loss improved from inf to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 149466s 15s/step - accuracy: 0.9992 - loss: 0.0014 - val_accuracy: 1.0000 - val_loss: 1.0903e-08
+Epoch 2/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 8s/step - accuracy: 1.0000 - loss: 1.9519e-08       
+Epoch 2: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 82058s 8s/step - accuracy: 1.0000 - loss: 1.9518e-08 - val_accuracy: 1.0000 - val_loss: 1.3180e-09
+Epoch 3/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 8s/step - accuracy: 1.0000 - loss: 1.0203e-09       
+Epoch 3: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 76131s 8s/step - accuracy: 1.0000 - loss: 1.0203e-09 - val_accuracy: 1.0000 - val_loss: 6.8516e-11
+Epoch 4/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 8s/step - accuracy: 1.0000 - loss: 3.1623e-10       
+Epoch 4: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 81559s 8s/step - accuracy: 1.0000 - loss: 3.1623e-10 - val_accuracy: 1.0000 - val_loss: 4.3919e-11
+Epoch 5/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 8s/step - accuracy: 1.0000 - loss: 2.4622e-10       
+Epoch 5: val_loss did not improve from 0.00000
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 75587s 8s/step - accuracy: 1.0000 - loss: 2.4622e-10 - val_accuracy: 1.0000 - val_loss: 6.3299e-11
+Epoch 6/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 7s/step - accuracy: 1.0000 - loss: 2.3987e-10       
+Epoch 6: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 72937s 7s/step - accuracy: 1.0000 - loss: 2.3987e-10 - val_accuracy: 1.0000 - val_loss: 2.5425e-11
+Epoch 7/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 8s/step - accuracy: 1.0000 - loss: 1.6366e-10       
+Epoch 7: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 78644s 8s/step - accuracy: 1.0000 - loss: 1.6366e-10 - val_accuracy: 1.0000 - val_loss: 1.8888e-11
+Epoch 8/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 9s/step - accuracy: 1.0000 - loss: 1.4037e-10
+Epoch 8: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 86677s 9s/step - accuracy: 1.0000 - loss: 1.4037e-10 - val_accuracy: 1.0000 - val_loss: 1.7483e-11
+Epoch 9/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 7s/step - accuracy: 1.0000 - loss: 1.3074e-10
+Epoch 9: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 73191s 7s/step - accuracy: 1.0000 - loss: 1.3074e-10 - val_accuracy: 1.0000 - val_loss: 1.5670e-11
+Epoch 10/10
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 0s 7s/step - accuracy: 1.0000 - loss: 1.1484e-10
+Epoch 10: val_loss improved from 0.00000 to 0.00000, saving model to cnn_lstm_model.keras
+9892/9892 ━━━━━━━━━━━━━━━━━━━━ 67762s 7s/step - accuracy: 1.0000 - loss: 1.1484e-10 - val_accuracy: 1.0000 - val_loss: 1.5043e-11
+✅ Entrenamiento completado. Modelo guardado en: cnn_lstm_model.keras
+PS C:\Users\JOSUE\Documents\10MO CICLO\TRABAJO DE INVESTIGACION>
